@@ -14,8 +14,8 @@ final class Delimiter {
         if (matcher.matches()) {
             String custom = Pattern.quote(matcher.group(1)); // 특수문자 안전 처리
             String numbers = matcher.group(2);
-            return numbers.split(custom);
+            return numbers.split(custom, -1);           // 말미 잘못된 구분자 차단
         }
-        return input.split(DEFAULT);
+        return input.split(DEFAULT, -1);                // 말미 잘못된 구분자 위치 차단
     }
 }

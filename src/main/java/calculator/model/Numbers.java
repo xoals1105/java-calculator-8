@@ -13,8 +13,11 @@ final class Numbers {
 
     static Numbers from(String[] tokens) {
         List<PositiveNumber> list = new ArrayList<>(tokens.length);
-        for (String t : tokens) {
-            list.add(PositiveNumber.of(t)); // 숫자 아님/음수 검증을 여기서 처리
+        for (String token : tokens) {
+            if(token == null || token.isBlank()) {
+                throw new IllegalArgumentException("구분자 위치가 올바르지 않습니다.");
+            }
+            list.add(PositiveNumber.of(token)); // 숫자 아님/음수 검증을 여기서 처리
         }
         return new Numbers(list);
     }

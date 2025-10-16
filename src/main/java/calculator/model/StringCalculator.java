@@ -19,13 +19,8 @@ public class StringCalculator {
         text = text.replace("\\n", "\n");
         String[] tokens = splitTokens(text);
 
-        int total = 0;
-        for(String token : tokens) {
-            int number = toInteger(token);
-            validateNonNegative(number);
-            total += number;
-        }
-        return total;
+        Numbers numbers = Numbers.from(tokens);
+        return numbers.sum();
     }
 
     private String[] splitTokens(String text) {
@@ -36,19 +31,5 @@ public class StringCalculator {
             return numbers.split(custom);
         }
         return text.split(",|:");
-    }
-
-    private  int toInteger(String token) {
-        try {
-            return Integer.parseInt(token);
-        } catch (NumberFormatException error) {
-            throw new IllegalArgumentException("숫자가 아닌 값이 포함됐습니다.");
-        }
-    }
-
-    private void validateNonNegative(int number) {
-        if(number < 0) {
-            throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
-        }
     }
 }

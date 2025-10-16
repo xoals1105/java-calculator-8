@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 final class Delimiter {
     private static final String DEFAULT = ",|:";
-    private static final Pattern CUSTOM = Pattern.compile("//(.)\n(.*)");
+    private static final Pattern CUSTOM = Pattern.compile("//(.+)\n(.*)");
 
     private Delimiter() { }
 

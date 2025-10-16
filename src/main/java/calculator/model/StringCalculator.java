@@ -17,19 +17,9 @@ public class StringCalculator {
         }
 
         text = text.replace("\\n", "\n");
-        String[] tokens = splitTokens(text);
+        String[] tokens = Delimiter.split(text);
 
         Numbers numbers = Numbers.from(tokens);
         return numbers.sum();
-    }
-
-    private String[] splitTokens(String text) {
-        Matcher matcher = CUSTOM.matcher(text);
-        if (matcher.matches()) {
-            String custom = Pattern.quote(matcher.group(1));
-            String numbers = matcher.group(2);
-            return numbers.split(custom);
-        }
-        return text.split(",|:");
     }
 }

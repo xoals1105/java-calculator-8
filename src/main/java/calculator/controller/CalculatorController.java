@@ -10,10 +10,8 @@ public class CalculatorController {
     private final StringCalculator stringCalculator = new StringCalculator();
 
     public void runCalculation() {
-
             String input = inputView.intputString();
             int result = stringCalculator.add(input);
             outputView.printResult(result);
-
     }
 }
